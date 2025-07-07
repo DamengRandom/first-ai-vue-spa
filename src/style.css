@@ -1,0 +1,100 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: dark;
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply bg-black text-orange font-sans m-0 min-h-screen;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-sans font-bold;
+  }
+}
+
+@layer components {
+  .neon-text {
+    @apply text-orange relative;
+    text-shadow: 0 0 5px #FFA500, 0 0 10px #FFA500;
+  }
+
+  .neon-border {
+    @apply border border-orange relative;
+    box-shadow: 0 0 5px #FFA500, 0 0 10px #FFA500;
+  }
+
+  .btn-primary {
+    @apply bg-black text-orange border border-orange px-6 py-3 rounded-md font-bold uppercase tracking-wider transition-all duration-300 hover:shadow-neon-orange;
+  }
+
+  .feature-card {
+    @apply bg-black border border-orange p-6 rounded-lg transition-all duration-300 hover:shadow-neon-orange;
+  }
+
+  .cyberpunk-grid {
+    background-image: linear-gradient(rgba(255, 165, 0, 0.1) 1px, transparent 1px),
+                      linear-gradient(90deg, rgba(255, 165, 0, 0.1) 1px, transparent 1px);
+    background-size: 20px 20px;
+  }
+
+  .glow-effect {
+    @apply relative;
+  }
+
+  .glow-effect::before {
+    @apply content-[''] absolute inset-0 rounded-md -z-10 opacity-50 transition-opacity duration-300;
+    background: radial-gradient(circle at center, #FFA500 0%, transparent 70%);
+  }
+
+  .glow-effect:hover::before {
+    @apply opacity-80;
+  }
+
+  .form-input {
+    @apply bg-black-light border-orange focus:border-orange-light focus:ring focus:ring-orange-glow text-orange;
+  }
+}
+
+/* Custom animations */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Parallax effect */
+.parallax-container {
+  perspective: 1px;
+  height: 100vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.parallax-layer {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.parallax-layer-back {
+  transform: translateZ(-1px) scale(2);
+}
+
+.parallax-layer-base {
+  transform: translateZ(0);
+}
